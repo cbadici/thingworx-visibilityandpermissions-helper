@@ -1,35 +1,7 @@
-## Welcome to GitHub Pages
-
-
-
 ### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The following utility is intended to allow rapid setting of permissions and visibility based on a template in a new ThingWorx instance.
 
-```markdown
-Syntax highlighted code
+Full documentation is available in the Visibility And Permission Manager Extension v1.0.0.docx file.
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/vrosu/thingworx-visibilityandpermissions-helper/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+This repository is optimized to be used with the Git Backup Extension (https://marketplace.ptc.com/apps/233917/git-backup-extension-202#!overview). If this link does not work, please search for "git backup" in the https://marketplace.ptc.com / Browse Apps
