@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b2219"
+ majorVersion="8"
+ minorVersion="4"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="3"
+ schemaVersion="1041"
+ universal="password">
+    <DataShapes>
+        <DataShape
+         baseDataShape=""
+         description="Datashape used to apply DesignTime permissions."
+         documentationContent=""
+         homeMashup=""
+         lastModifiedDate="2019-04-24T22:14:47.686+03:00"
+         name="GitBackup.DesignTimePermissions.DS"
+         projectName="VisibilityAndPermissionsHelper"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read>
+                    <Principal
+                     isPermitted="false"
+                     name="admin1.lhb"
+                     type="User"></Principal>
+                </Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <FieldDefinitions>
+                <FieldDefinition
+                 aspect.defaultValue="false"
+                 aspect.isPrimaryKey="false"
+                 baseType="BOOLEAN"
+                 description="Whether the permission should be allowed or forbidden. (EG. ServiceInvoke is allowed or forbidden)"
+                 name="Allow"
+                 ordinal="9"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description=""
+                 name="EntityName"
+                 ordinal="2"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description=""
+                 name="EntityType"
+                 ordinal="3"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description="Add or Remove. Depending on this setting we will either do AddRunTimePermissions or DeleteRuntimePermissions."
+                 name="Operation"
+                 ordinal="5"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="STRING"
+                 description="Can be Create, Read, Update, Delete"
+                 name="PermissionType"
+                 ordinal="6"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="STRING"
+                 description="Can be user or group"
+                 name="User"
+                 ordinal="7"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="STRING"
+                 description="User or Group"
+                 name="UserType"
+                 ordinal="8"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description=""
+                 name="Version"
+                 ordinal="1"></FieldDefinition>
+            </FieldDefinitions>
+        </DataShape>
+    </DataShapes>
+</Entities>
