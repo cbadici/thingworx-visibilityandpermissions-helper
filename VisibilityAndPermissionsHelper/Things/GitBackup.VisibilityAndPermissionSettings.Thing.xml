@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Entities
- build="b2219"
+ build="b2151"
  majorVersion="8"
  minorVersion="4"
- modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
- revision="3"
- schemaVersion="1041"
+ modelPersistenceProviderPackage="MssqlPersistenceProviderPackage"
+ revision="2"
+ schemaVersion="1040"
  universal="password">
     <Things>
         <Thing
@@ -15,7 +15,7 @@
          enabled="true"
          homeMashup=""
          identifier=""
-         lastModifiedDate="2019-04-24T22:14:47.693+03:00"
+         lastModifiedDate="2019-07-05T13:12:40.171+02:00"
          name="GitBackup.VisibilityAndPermissionSettings.Thing"
          projectName="VisibilityAndPermissionsHelper"
          published="false"
@@ -220,13 +220,13 @@
                                                 mashups: "Mashups",
                                                 dashboards: "Dashboards",
                                                 menus: "Menus",
-                                                mediaentities: "Media",
+                                                mediaentities: "MediaEntities",
                                                 styledefinitions: "StyleDefinitions",
                                                 statedefinitions: "StateDefinitions",
                                                 stylethemes: "StyleThemes",
                                                 datatags: "DataTags",
                                                 persistenceproviders: "PersistenceProviders",
-                                                usergroups: "UserGroups",
+                                                usergroups: "Groups",
                                                 users: "Users",
                                                 organizations: "Organizations",
                                                 applicationkeys: "ApplicationKeys",
@@ -563,13 +563,13 @@
                                                 mashups: "Mashups",
                                                 dashboards: "Dashboards",
                                                 menus: "Menus",
-                                                mediaentities: "Media",
+                                                mediaentities: "MediaEntities",
                                                 styledefinitions: "StyleDefinitions",
                                                 statedefinitions: "StateDefinitions",
                                                 stylethemes: "StyleThemes",
                                                 datatags: "DataTags",
                                                 persistenceproviders: "PersistenceProviders",
-                                                usergroups: "UserGroups",
+                                                usergroups: "Groups",
                                                 users: "Users",
                                                 organizations: "Organizations",
                                                 applicationkeys: "ApplicationKeys",
@@ -1106,7 +1106,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:27:44.413+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:27:44.413+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </VisibilityOps>
                 <DesignTimePermissionsOps>
@@ -1207,7 +1207,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:45:07.270+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:45:07.270+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </DesignTimePermissionsOps>
                 <RunTimePermissionsOps>
@@ -1319,7 +1319,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:37:57.682+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:37:57.682+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </RunTimePermissionsOps>
             </ThingProperties>
