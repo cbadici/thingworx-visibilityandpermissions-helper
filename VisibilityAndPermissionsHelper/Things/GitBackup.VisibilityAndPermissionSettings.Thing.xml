@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Entities
- build="b2219"
+ build="b2151"
  majorVersion="8"
  minorVersion="4"
- modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
- revision="3"
- schemaVersion="1041"
+ modelPersistenceProviderPackage="MssqlPersistenceProviderPackage"
+ revision="2"
+ schemaVersion="1040"
  universal="password">
     <Things>
         <Thing
@@ -15,7 +15,7 @@
          enabled="true"
          homeMashup=""
          identifier=""
-         lastModifiedDate="2019-04-24T22:14:47.693+03:00"
+         lastModifiedDate="2019-07-05T13:52:50.458+02:00"
          name="GitBackup.VisibilityAndPermissionSettings.Thing"
          projectName="VisibilityAndPermissionsHelper"
          published="false"
@@ -220,13 +220,13 @@
                                                 mashups: "Mashups",
                                                 dashboards: "Dashboards",
                                                 menus: "Menus",
-                                                mediaentities: "Media",
+                                                mediaentities: "MediaEntities",
                                                 styledefinitions: "StyleDefinitions",
                                                 statedefinitions: "StateDefinitions",
                                                 stylethemes: "StyleThemes",
                                                 datatags: "DataTags",
                                                 persistenceproviders: "PersistenceProviders",
-                                                usergroups: "UserGroups",
+                                                usergroups: "Groups",
                                                 users: "Users",
                                                 organizations: "Organizations",
                                                 applicationkeys: "ApplicationKeys",
@@ -296,10 +296,19 @@
                                                                 logger.info("Entered add case for Entity name " + row.EntityName + " and Entity Type " + row.toJSON());
                                                                 (eval(str_EntityType + "s"))[row.EntityName].AddDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
                                                                 break;
+                                                            case "addinstance":
+                                                                logger.info("Entered add case for Entity name " + row.EntityName + " and Entity Type " + row.toJSON());
+                                                                (eval(str_EntityType + "s"))[row.EntityName].AddInstanceDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
+                                                                break;
                                                             case "remove":
                                                                 //in this case, if the Operation type is Remove, we remove the permission.
                                                                 logger.info("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
                                                                 (eval(str_EntityType + "s"))[row.EntityName].DeleteDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType });
+                                                                break;
+                                                            case "removeinstance":
+                                                                //in this case, if the Operation type is Remove, we remove the permission.
+                                                                logger.info("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                (eval(str_EntityType + "s"))[row.EntityName].DeleteInstanceDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType });
                                                                 break;
                                                             default: break;
                                                         }
@@ -563,13 +572,13 @@
                                                 mashups: "Mashups",
                                                 dashboards: "Dashboards",
                                                 menus: "Menus",
-                                                mediaentities: "Media",
+                                                mediaentities: "MediaEntities",
                                                 styledefinitions: "StyleDefinitions",
                                                 statedefinitions: "StateDefinitions",
                                                 stylethemes: "StyleThemes",
                                                 datatags: "DataTags",
                                                 persistenceproviders: "PersistenceProviders",
-                                                usergroups: "UserGroups",
+                                                usergroups: "Groups",
                                                 users: "Users",
                                                 organizations: "Organizations",
                                                 applicationkeys: "ApplicationKeys",
@@ -639,11 +648,19 @@
                                                                 logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
                                                                 (eval(str_EntityType + "s"))[row.EntityName].AddRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
                                                                 break;
+                                                            case "addinstance":
+                                                                logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                (eval(str_EntityType + "s"))[row.EntityName].AddInstanceRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
+                                                                break;
                                                             case "remove":
                                                                 //in this case, if the Operation type is Remove, we remove the permission.
                                                                 //if 
                                                                 logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
                                                                 (eval(str_EntityType + "s"))[row.EntityName].DeleteRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType });
+                                                                break;
+                                                           case "removeinstance":
+                                                                logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                (eval(str_EntityType + "s"))[row.EntityName].DeleteInstanceRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType });
                                                                 break;
                                                             default: break;
                                                         }
@@ -946,9 +963,17 @@
                                                     		 logger.trace("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
                                                             (eval(str_EntityType+"s"))[row.EntityName].AddVisibilityPermission({	principal: row.OrganizationalUnitName,principalType: "OrganizationalUnit"});
                                                     	break;
+                                                        case "addinstance":
+                                                    		 logger.trace("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
+                                                            (eval(str_EntityType+"s"))[row.EntityName].AddInstanceVisibilityPermission({	principal: row.OrganizationalUnitName,principalType: "OrganizationalUnit"});
+                                                    	break;
                                                         case "remove":
                                                             logger.trace("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
                                                               (eval(str_EntityType+"s"))[row.EntityName].DeleteVisibilityPermission({principal: row.OrganizationalUnitName ,	principalType: "OrganizationalUnit" });
+                                                            break;
+                                                        case "removeinstance":
+                                                            logger.trace("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
+                                                              (eval(str_EntityType+"s"))[row.EntityName].DeleteInstanceVisibilityPermission({principal: row.OrganizationalUnitName ,	principalType: "OrganizationalUnit" });
                                                             break;
                                                         default: break;
                                                           }
@@ -1106,7 +1131,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:27:44.413+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:27:44.413+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </VisibilityOps>
                 <DesignTimePermissionsOps>
@@ -1207,7 +1232,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:45:07.270+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:45:07.270+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </DesignTimePermissionsOps>
                 <RunTimePermissionsOps>
@@ -1319,7 +1344,7 @@
                             </Rows>
                         </infoTable>
                     </Value>
-                    <Timestamp>2019-04-12T18:37:57.682+03:00</Timestamp>
+                    <Timestamp>2019-04-12T17:37:57.682+02:00</Timestamp>
                     <Quality>GOOD</Quality>
                 </RunTimePermissionsOps>
             </ThingProperties>
