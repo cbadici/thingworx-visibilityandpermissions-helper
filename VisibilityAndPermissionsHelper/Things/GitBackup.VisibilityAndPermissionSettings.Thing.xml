@@ -110,7 +110,7 @@
                      isPrivate="false"
                      name="SetRunTimePermissions">
                         <ResultType
-                         baseType="NOTHING"
+                         baseType="INFOTABLE"
                          description=""
                          name="result"
                          ordinal="0"></ResultType>
@@ -172,32 +172,32 @@
                                         <code>
                                         <![CDATA[
                                         try {
-                                            
-                                              var designtime_params = {
-                                        	t: me.DesignTimePermissionsOps/* INFOTABLE */,
-                                        	query: {
-                                            "filters": {
-                                                "type": "EQ",
-                                                "fieldName": "Version",
-                                                "value": Version
-                                            }
-                                        	}
-                                        };
-                                        var iftbl_DesignTimeOperations = Resources["InfoTableFunctions"].Query(designtime_params);
-                                        //    
-                                        //    var iftbl_DesignTimeOperations = Things["GitBackup.DesignTimePermissions.DT"].QueryDataTableEntries({
-                                        //        maxItems: 1000000 /* NUMBER */,
-                                        //        values: undefined /* INFOTABLE */,
-                                        //        query: {
-                                        //            "filters": {
-                                        //                "type": "EQ",
-                                        //                "fieldName": "Version",
-                                        //                "value": Version
-                                        //            }
-                                        //        } /* QUERY */,
-                                        //        source: undefined /* STRING */,
-                                        //        tags: undefined /* TAGS */
-                                        //    });
+                                        
+                                            var designtime_params = {
+                                                t: me.DesignTimePermissionsOps/* INFOTABLE */,
+                                                query: {
+                                                    "filters": {
+                                                        "type": "EQ",
+                                                        "fieldName": "Version",
+                                                        "value": Version
+                                                    }
+                                                }
+                                            };
+                                            var iftbl_DesignTimeOperations = Resources["InfoTableFunctions"].Query(designtime_params);
+                                            //    
+                                            //    var iftbl_DesignTimeOperations = Things["GitBackup.DesignTimePermissions.DT"].QueryDataTableEntries({
+                                            //        maxItems: 1000000 /* NUMBER */,
+                                            //        values: undefined /* INFOTABLE */,
+                                            //        query: {
+                                            //            "filters": {
+                                            //                "type": "EQ",
+                                            //                "fieldName": "Version",
+                                            //                "value": Version
+                                            //            }
+                                            //        } /* QUERY */,
+                                            //        source: undefined /* STRING */,
+                                            //        tags: undefined /* TAGS */
+                                            //    });
                                             var permissionTypes = {
                                                 create: "Create",
                                                 read: "Read",
@@ -341,220 +341,38 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        try
-                                        {
-                                          
-                                        var iftbl_DesignTimeOperations: twx.INFOTABLE<twx.ds.GitBackupDesignTimePermissionsDS> =  Things["GitBackup.DesignTimePermissions.DT"].QueryDataTableEntries({
-                                        	maxItems: 1000000 /* NUMBER */,
-                                        	values: undefined /* INFOTABLE */,
-                                        	query: {
-                                            "filters": {
-                                                "type": "EQ",
-                                                "fieldName": "Version",
-                                                "value": Version
-                                            }
-                                        	} /* QUERY */,
-                                        	source: undefined /* STRING */,
-                                        	tags: undefined /* TAGS */
-                                        });
-                                        
-                                        const permissionTypes = {
-                                            create: "Create",
-                                            read: "Read",
-                                            update : "Update",
-                                            delete: "Delete"
-                                        }
-                                        
-                                        const PrincipalTypes = {
-                                            user: "User",
-                                            group: "Group"
-                                        }
-                                        
-                                        const CollectionName={
-                                            projects: "Projects",
-                                            things: "Things",
-                                            thingtemplates: "ThingTemplates",
-                                            thingshapes: "ThingShapes",
-                                            datashapes: "DataShapes",
-                                            networks: "Networks",
-                                            modeltags: "Model Tags",
-                                            notifications: "Notifications",
-                                            mashups: "Mashups",
-                                            dashboards: "Dashboards",
-                                            menus: "Menus",
-                                            mediaentities: "Media",
-                                            styledefinitions: "Style Definitions",
-                                            statedefinitions: "State Definitions",
-                                            stylethemes: "Style Themes",
-                                            datatags: "Data Tags",
-                                            persistenceproviders: "Persistence Providers",
-                                            usergroups: "User Groups",
-                                            users: "Users",
-                                            organizations: "Organizations",
-                                            applicationkeys: "Application Keys",
-                                            directoryservices: "Directory Services",
-                                            authenticators: "Authenticators",
-                                            localizationtables: "Localization Tables",
-                                            resources: "Resources",
-                                            subsystems: "Subsystems",
-                                            logs: "Logs"
-                                        }
-                                        
-                                        var tableLength = iftbl_DesignTimeOperations.rows.length;
-                                        for (const row of iftbl_DesignTimeOperations.rows) {
-                                            //making sure that casing is not an issue 
-                                            var str_Operation = row.Operation.toLowerCase();
-                                            var str_EntityType = row.EntityType;
-                                            //making sure that casing is not an issue for the Permission Type
-                                            //PermissionType can be Create, Read, Update, Delete
-                                            var str_PermissionType = permissionTypes[row.PermissionType.toLowerCase()];
-                                            var str_PrincipalType = PrincipalTypes[row.UserType.toLowerCase()];
-                                               
-                                            switch (str_EntityType)
-                                                    {
-                                                case "Project":
-                                                case "Thing":
-                                                case "ThingTemplate":
-                                                case "ThingShape":
-                                                case "DataShape":
-                                                case "ModelTag":
-                                                case "Network":
-                                                case "IndustrialConnection":
-                                                case "IntegrationConnector":
-                                                case "Mashup":
-                                                case "Master":
-                                                case "MashupTemplate":
-                                                case "Gadget":
-                                                case "Dashboard":
-                                                case "Menu":
-                                                case "MediaEntity":
-                                                case "StyleDefinition":
-                                                case "StyleTheme":
-                                                case "StateDefinition":
-                                                case "DataTable":
-                                                case "Stream":
-                                                case "ValueStream":
-                                                case "DataTag":
-                                                case "PersistenceProvider":
-                                                case "Blog":
-                                                case "Wiki":
-                                                case "UserGroup":
-                                                case "User":
-                                                case "Organization":
-                                                case "ApplicationKey":
-                                                case "DirectoryService":
-                                                case "Authenticator":
-                                                case "LocalizationTable":
-                                                case "Resource":
-                                                case "Subsystem":
-                                                    if (str_EntityType == "Wiki" || str_EntityType == "Blog" || str_EntityType == "ValueStream" ||str_EntityType == "Stream" || str_EntityType == "DataTable"|| str_EntityType == "IndustrialConnection" || str_EntityType == "IntegrationConnector") str_EntityType="Thing";
-                                                    if (str_EntityType == "Master" || str_EntityType == "MashupTemplate" || str_EntityType == "Gadget") str_EntityType="Mashup";
-                                                    if (str_EntityType == "MediaEntity") str_EntityType = "MediaEntitie";
-                                                    if (str_EntityType == "UserGroup") str_EntityType = "Group";
-                                                    switch (str_Operation){
-                                                        case "add":
-                                                    		 logger.info("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ row.toJSON());
-                                                            (eval(str_EntityType+"s"))[row.EntityName].AddDesignTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType,allow:row.Allow	});
-                                                      	break;
-                                                        case "remove":
-                                                            //in this case, if the Operation type is Remove, we remove the permission.
-                                                            
-                                                            logger.info("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                              (eval(str_EntityType+"s"))[row.EntityName].DeleteDesignTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType	});
-                                                            break;
-                                                        default: break;
-                                                          }
-                                                          break;
-                                                case "Collection":
-                                                str_EntityType = CollectionName[row.EntityName.toLowerCase()];
-                                                switch (str_Operation){
-                                                        case "add":
-                                                    		 logger.info("Entered add collection case for Entity name "+row.EntityName +" and Entity Type "+ row.EntityType);
-                                                            Resources["CollectionFunctions"].AddCollectionDesignTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType,allow:row.Allow, collectionName:str_EntityType	});
-                                                
-                                                    	break;
-                                                        case "remove":
-                                                            //in this case, if the Operation type is Remove, we remove the permission.
-                                                             
-                                        
-                                                            logger.info("Entered remove collection case for Entity name "+row.EntityName +" and Entity Type "+ row.EntityType);
-                                                              Resources["CollectionFunctions"].DeleteCollectionDesignTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType, collectionName:str_EntityType	});
-                                                            break;
-                                                        default: break;
-                                                          }
-                                                break;
-                                                default: break;
-                                            }
-                                        }
-                                        }
-                                        catch (ex)
-                                        {
-                                            logger.error(ex);
-                                        }
-                                        ]]>
-                                        </code>
-                                    </Row>
-                                </Rows>
-                            </ConfigurationTable>
-                        </ConfigurationTables>
-                    </ServiceImplementation>
-                    <ServiceImplementation
-                     description=""
-                     handlerName="Script"
-                     name="SetRunTimePermissions">
-                        <ConfigurationTables>
-                            <ConfigurationTable
-                             description=""
-                             isMultiRow="false"
-                             name="Script"
-                             ordinal="0">
-                                <DataShape>
-                                    <FieldDefinitions>
-                                        <FieldDefinition
-                                         baseType="STRING"
-                                         description="code"
-                                         name="code"
-                                         ordinal="0"></FieldDefinition>
-                                    </FieldDefinitions>
-                                </DataShape>
-                                <Rows>
-                                    <Row>
-                                        <code>
-                                        <![CDATA[
                                         try {
-                                            // result: INFOTABLE dataShape: ""
-                                            
-                                            
-                                            var runtime_params = {
-                                        	t: me.RunTimePermissionsOps/* INFOTABLE */,
-                                        	query: {
-                                            "filters": {
-                                                "type": "EQ",
-                                                "fieldName": "Version",
-                                                "value": Version
-                                            }
-                                        	}
-                                        };
-                                        var iftbl_RuntimeOperations = Resources["InfoTableFunctions"].Query(runtime_params);
-                                        //    var iftbl_RuntimeOperations = Things["GitBackup.RunTimePermission.DT"].QueryDataTableEntries({
-                                        //        maxItems: 1000000 /* NUMBER */,
-                                        //        values: undefined /* INFOTABLE */,
-                                        //        query: {
-                                        //            "filters": {
-                                        //                "type": "EQ",
-                                        //                "fieldName": "Version",
-                                        //                "value": Version
-                                        //            }
-                                        //        } /* QUERY */,
-                                        //        source: undefined /* STRING */,
-                                        //        tags: undefined /* TAGS */
-                                        //    });
+                                        
+                                            var designtime_params = {
+                                                t: me.DesignTimePermissionsOps/* INFOTABLE */,
+                                                query: {
+                                                    "filters": {
+                                                        "type": "EQ",
+                                                        "fieldName": "Version",
+                                                        "value": Version
+                                                    }
+                                                }
+                                            };
+                                            var iftbl_DesignTimeOperations = Resources["InfoTableFunctions"].Query(designtime_params);
+                                            //    
+                                            //    var iftbl_DesignTimeOperations = Things["GitBackup.DesignTimePermissions.DT"].QueryDataTableEntries({
+                                            //        maxItems: 1000000 /* NUMBER */,
+                                            //        values: undefined /* INFOTABLE */,
+                                            //        query: {
+                                            //            "filters": {
+                                            //                "type": "EQ",
+                                            //                "fieldName": "Version",
+                                            //                "value": Version
+                                            //            }
+                                            //        } /* QUERY */,
+                                            //        source: undefined /* STRING */,
+                                            //        tags: undefined /* TAGS */
+                                            //    });
                                             var permissionTypes = {
-                                                propertyread: "PropertyRead",
-                                                serviceinvoke: "ServiceInvoke",
-                                                propertywrite: "PropertyWrite",
-                                                eventinvoke: "EventInvoke",
-                                                eventsubscribe: "EventSubscribe"
+                                                create: "Create",
+                                                read: "Read",
+                                                update: "Update",
+                                                delete: "Delete"
                                             };
                                             var PrincipalTypes = {
                                                 user: "User",
@@ -589,14 +407,14 @@
                                                 subsystems: "Subsystems",
                                                 logs: "Logs"
                                             };
-                                            var tableLength = iftbl_RuntimeOperations.rows.length;
-                                            for (var _i = 0, _a = iftbl_RuntimeOperations.rows; _i < _a.length; _i++) {
+                                            var tableLength = iftbl_DesignTimeOperations.rows.length;
+                                            for (var _i = 0, _a = iftbl_DesignTimeOperations.rows; _i < _a.length; _i++) {
                                                 var row = _a[_i];
                                                 //making sure that casing is not an issue 
                                                 var str_Operation = row.Operation.toLowerCase();
                                                 var str_EntityType = row.EntityType;
                                                 //making sure that casing is not an issue for the Permission Type
-                                                //PermissionType can be PropertyRead, PropertyWrite, ServiceInvoke, EventInvoke, EventSubscribe
+                                                //PermissionType can be Create, Read, Update, Delete
                                                 var str_PermissionType = permissionTypes[row.PermissionType.toLowerCase()];
                                                 var str_PrincipalType = PrincipalTypes[row.UserType.toLowerCase()];
                                                 switch (str_EntityType) {
@@ -645,22 +463,13 @@
                                                             str_EntityType = "Group";
                                                         switch (str_Operation) {
                                                             case "add":
-                                                                logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
-                                                                (eval(str_EntityType + "s"))[row.EntityName].AddRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
-                                                                break;
-                                                            case "addinstance":
-                                                                logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
-                                                                (eval(str_EntityType + "s"))[row.EntityName].AddInstanceRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
+                                                                logger.info("Entered add case for Entity name " + row.EntityName + " and Entity Type " + row.toJSON());
+                                                                (eval(str_EntityType + "s"))[row.EntityName].AddDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, allow: row.Allow });
                                                                 break;
                                                             case "remove":
                                                                 //in this case, if the Operation type is Remove, we remove the permission.
-                                                                //if 
-                                                                logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
-                                                                (eval(str_EntityType + "s"))[row.EntityName].DeleteRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType });
-                                                                break;
-                                                           case "removeinstance":
-                                                                logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
-                                                                (eval(str_EntityType + "s"))[row.EntityName].DeleteInstanceRunTimePermission({ type: str_PermissionType, resource: row.Resource, principal: row.User, principalType: str_PrincipalType });
+                                                                logger.info("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                (eval(str_EntityType + "s"))[row.EntityName].DeleteDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType });
                                                                 break;
                                                             default: break;
                                                         }
@@ -669,13 +478,13 @@
                                                         str_CollectionName = CollectionName[row.EntityName.toLowerCase()];
                                                         switch (str_Operation) {
                                                             case "add":
-                                                                logger.trace("Entered add runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
-                                                                Resources["CollectionFunctions"].AddCollectionRunTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, allow: row.Allow, collectionName: str_CollectionName, resource: "*" });
+                                                                logger.trace("Entered add collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].AddCollectionDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, allow: row.Allow, collectionName: str_CollectionName });
                                                                 break;
                                                             case "remove":
                                                                 //in this case, if the Operation type is Remove, we remove the permission.
-                                                                logger.trace("Entered remove runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
-                                                                Resources["CollectionFunctions"].DeleteCollectionRunTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, collectionName: str_CollectionName, resource: "*" });
+                                                                logger.trace("Entered remove collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].DeleteCollectionDesignTimePermission({ type: str_PermissionType, principal: row.User, principalType: str_PrincipalType, collectionName: str_CollectionName });
                                                                 break;
                                                             default: break;
                                                         }
@@ -690,163 +499,494 @@
                                         ]]>
                                         </code>
                                     </Row>
+                                </Rows>
+                            </ConfigurationTable>
+                        </ConfigurationTables>
+                    </ServiceImplementation>
+                    <ServiceImplementation
+                     description=""
+                     handlerName="Script"
+                     name="SetRunTimePermissions">
+                        <ConfigurationTables>
+                            <ConfigurationTable
+                             description=""
+                             isMultiRow="false"
+                             name="Script"
+                             ordinal="0">
+                                <DataShape>
+                                    <FieldDefinitions>
+                                        <FieldDefinition
+                                         baseType="STRING"
+                                         description="code"
+                                         name="code"
+                                         ordinal="0"></FieldDefinition>
+                                    </FieldDefinitions>
+                                </DataShape>
+                                <Rows>
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        try
-                                        { 
-                                                
-                                        // result: INFOTABLE dataShape: ""
-                                        var iftbl_RuntimeOperations: twx.INFOTABLE<twx.ds.GitBackupRuntimePermissionsDS> =  Things["GitBackup.RunTimePermission.DT"].QueryDataTableEntries({
-                                        	maxItems: 1000000 /* NUMBER */,
-                                        	values: undefined /* INFOTABLE */,
-                                        	query: {
-                                            "filters": {
-                                                "type": "EQ",
-                                                "fieldName": "Version",
-                                                "value": Version
+                                        var runtime_params = {
+                                            t: me.RunTimePermissionsOps /* INFOTABLE */,
+                                            query: {
+                                                "filters": {
+                                                    "type": "EQ",
+                                                    "fieldName": "Version",
+                                                    "value": Version
+                                                }
                                             }
-                                        	} /* QUERY */,
-                                        	source: undefined /* STRING */,
-                                        	tags: undefined /* TAGS */
-                                        });
-                                        
-                                        const permissionTypes = {
+                                        };
+                                        var iftbl_RuntimeOperations = Resources["InfoTableFunctions"].Query(runtime_params);
+                                        //    var iftbl_RuntimeOperations = Things["GitBackup.RunTimePermission.DT"].QueryDataTableEntries({
+                                        //        maxItems: 1000000 /* NUMBER */,
+                                        //        values: undefined /* INFOTABLE */,
+                                        //        query: {
+                                        //            "filters": {
+                                        //                "type": "EQ",
+                                        //                "fieldName": "Version",
+                                        //                "value": Version
+                                        //            }
+                                        //        } /* QUERY */,
+                                        //        source: undefined /* STRING */,
+                                        //        tags: undefined /* TAGS */
+                                        //    });
+                                        var permissionTypes = {
                                             propertyread: "PropertyRead",
                                             serviceinvoke: "ServiceInvoke",
-                                            propertywrite : "PropertyWrite",
+                                            propertywrite: "PropertyWrite",
                                             eventinvoke: "EventInvoke",
                                             eventsubscribe: "EventSubscribe"
-                                        }
-                                        
-                                        const PrincipalTypes = {
+                                        };
+                                        var PrincipalTypes = {
                                             user: "User",
                                             group: "Group"
-                                        }
-                                        
-                                        const CollectionName={
+                                        };
+                                        var CollectionName = {
                                             projects: "Projects",
                                             things: "Things",
                                             thingtemplates: "ThingTemplates",
                                             thingshapes: "ThingShapes",
                                             datashapes: "DataShapes",
                                             networks: "Networks",
-                                            modeltags: "Model Tags",
+                                            modeltags: "ModelTags",
                                             notifications: "Notifications",
                                             mashups: "Mashups",
                                             dashboards: "Dashboards",
                                             menus: "Menus",
-                                            mediaentities: "Media",
-                                            styledefinitions: "Style Definitions",
-                                            statedefinitions: "State Definitions",
-                                            stylethemes: "Style Themes",
-                                            datatags: "Data Tags",
-                                            persistenceproviders: "Persistence Providers",
-                                            usergroups: "User Groups",
+                                            mediaentities: "MediaEntities",
+                                            styledefinitions: "StyleDefinitions",
+                                            statedefinitions: "StateDefinitions",
+                                            stylethemes: "StyleThemes",
+                                            datatags: "DataTags",
+                                            persistenceproviders: "PersistenceProviders",
+                                            usergroups: "Groups",
                                             users: "Users",
                                             organizations: "Organizations",
-                                            applicationkeys: "Application Keys",
-                                            directoryservices: "Directory Services",
+                                            applicationkeys: "ApplicationKeys",
+                                            directoryservices: "DirectoryServices",
                                             authenticators: "Authenticators",
-                                            localizationtables: "Localization Tables",
+                                            localizationtables: "LocalizationTables",
                                             resources: "Resources",
                                             subsystems: "Subsystems",
                                             logs: "Logs"
-                                        }
-                                        
-                                        var tableLength = iftbl_RuntimeOperations.rows.length;
-                                        for (const row of iftbl_RuntimeOperations.rows) {
-                                            //making sure that casing is not an issue 
-                                            var str_Operation = row.Operation.toLowerCase();
-                                            var str_EntityType = row.EntityType;
-                                            //making sure that casing is not an issue for the Permission Type
-                                            //PermissionType can be PropertyRead, PropertyWrite, ServiceInvoke, EventInvoke, EventSubscribe
-                                            var str_PermissionType = permissionTypes[row.PermissionType.toLowerCase()];
-                                            var str_PrincipalType = PrincipalTypes[row.UserType.toLowerCase()];
-                                               
-                                            switch (str_EntityType)
-                                                    {
-                                                case "Project":
-                                                case "Thing":
-                                                case "ThingTemplate":
-                                                case "ThingShape":
-                                                case "DataShape":
-                                                case "ModelTag":
-                                                case "Network":
-                                                case "IndustrialConnection":
-                                                case "IntegrationConnector":
-                                                case "Mashup":
-                                                case "Master":
-                                                case "MashupTemplate":
-                                                case "Gadget":
-                                                case "Dashboard":
-                                                case "Menu":
-                                                case "MediaEntity":
-                                                case "StyleDefinition":
-                                                case "StyleTheme":
-                                                case "StateDefinition":
-                                                case "DataTable":
-                                                case "Stream":
-                                                case "ValueStream":
-                                                case "DataTag":
-                                                case "PersistenceProvider":
-                                                case "Blog":
-                                                case "Wiki":
-                                                case "UserGroup":
-                                                case "User":
-                                                case "Organization":
-                                                case "ApplicationKey":
-                                                case "DirectoryService":
-                                                case "Authenticator":
-                                                case "LocalizationTable":
-                                                case "Resource":
-                                                case "Subsystem":
-                                                    if (str_EntityType == "Wiki" || str_EntityType == "Blog" || str_EntityType == "ValueStream" ||str_EntityType == "Stream" || str_EntityType == "DataTable"|| str_EntityType == "IndustrialConnection" || str_EntityType == "IntegrationConnector") str_EntityType="Thing";
-                                                    if (str_EntityType == "Master" || str_EntityType == "MashupTemplate" || str_EntityType == "Gadget") str_EntityType="Mashup";
-                                                    if (str_EntityType == "MediaEntity") str_EntityType = "MediaEntitie";
-                                                    if (str_EntityType == "UserGroup") str_EntityType = "Group";
-                                                    switch (str_Operation){
-                                                        case "add":
-                                                    		 logger.trace("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                            (eval(str_EntityType+"s"))[row.EntityName].AddRunTimePermission({type:str_PermissionType,resource:row.Resource,principal:row.User,principalType:str_PrincipalType,allow:row.Allow	});
-                                                            
-                                                    	break;
-                                                        case "remove":
-                                                            //in this case, if the Operation type is Remove, we remove the permission.
-                                                            //if 
-                                                            logger.trace("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                              (eval(str_EntityType+"s"))[row.EntityName].DeleteRunTimePermission({type:str_PermissionType,resource:row.Resource,principal:row.User,principalType:str_PrincipalType	});
-                                                            break;
-                                                        default: break;
-                                                          }
-                                                          break;
-                                                case "Collection":
-                                                str_EntityType = CollectionName[row.EntityName.toLowerCase()];
-                                                switch (str_Operation){
-                                                        case "add":
-                                                    		logger.warn("Entered add runtime collection case for Entity name "+row.EntityName +" and Entity Type "+ row.EntityType);
-                                        
-                                                        Resources["CollectionFunctions"].AddCollectionRunTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType,allow:row.Allow, collectionName:row.EntityName,resource:"*"	});
-                                                
-                                                    	break;
-                                                        case "remove":
-                                                            //in this case, if the Operation type is Remove, we remove the permission.
-                                                             
-                                        
-                                                            logger.warn("Entered remove runtime collection case for Entity name "+row.EntityName +" and Entity Type "+ row.EntityType);
-                                                              Resources["CollectionFunctions"].DeleteCollectionRunTimePermission({type:str_PermissionType,principal:row.User,principalType:str_PrincipalType, collectionName:row.EntityName,resource:"*"	});
-                                                            break;
-                                                        default: break;
-                                                          }
-                                                break;
-                                                default: break;
+                                        };
+                                        // transform the table into a new one that expands all the csv lists
+                                        var iftbl_ExpandedOperations = DataShapes["GitBackup.RuntimePermissions.DS"].CreateValues();
+                                        for (var i = 0; i < iftbl_RuntimeOperations.length; i++) {
+                                            var element = iftbl_RuntimeOperations[i];
+                                            var splitPermissionType = element.PermissionType.split(",");
+                                            var splitResource = element.Resource.split(",");
+                                            var splitUser = element.User.split(",");
+                                            var splitEntityName = element.EntityName.split(",");
+                                            for (var j = 0; j < splitPermissionType.length; j++) {
+                                                for (var k = 0; k < splitResource.length; k++) {
+                                                    for (var l = 0; l < splitUser.length; l++) {
+                                                        for (var ii = 0; ii < splitEntityName.length; ii++) {
+                                                            iftbl_ExpandedOperations.AddRow({
+                                                                Version: element.Version,
+                                                                EntityName: splitEntityName[ii].trim(),
+                                                                EntityType: element.EntityType,
+                                                                Operation: element.Operation,
+                                                                Allow: element.Allow,
+                                                                PermissionType: splitPermissionType[j].trim(),
+                                                                User: splitUser[l].trim(),
+                                                                UserType: element.UserType,
+                                                                Resource: splitResource[k].trim()
+                                                            });
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
+                                        iftbl_ExpandedOperations = Resources["InfoTableFunctions"].Distinct({
+                                            t: iftbl_ExpandedOperations,
+                                            columns: "EntityName,EntityType,Operation,PermissionType,Resource,User,UserType,Version,Allow"
+                                        });
+                                        var result = iftbl_ExpandedOperations;
+                                        var tableLength = iftbl_ExpandedOperations.rows.length;
+                                        for (var _i = 0, _a = iftbl_ExpandedOperations.rows; _i < _a.length; _i++) {
+                                            try {
+                                                var row = _a[_i];
+                                                //making sure that casing is not an issue 
+                                                var str_Operation = row.Operation.toLowerCase();
+                                                var str_PrincipalType = PrincipalTypes[row.UserType.toLowerCase()];
+                                                var str_PermissionType = row.PermissionType.toLowerCase();
+                                                var str_EntityType = row.EntityType;
+                                                //making sure that casing is not an issue for the Permission Type
+                                                //PermissionType can be PropertyRead, PropertyWrite, ServiceInvoke, EventInvoke, EventSubscribe
+                                                var isInstancePermission = false;
+                                                if (str_PermissionType.indexOf("instance") == 0) {
+                                                    // this are thingtemplate/thingshape level permissions
+                                                    isInstancePermission = true;
+                                                    str_PermissionType = str_PermissionType.substring("instance".length);
+                                                }
+                                                str_PermissionType = permissionTypes[str_PermissionType];
+                                                switch (str_EntityType) {
+                                                    case "Project":
+                                                    case "Thing":
+                                                    case "ThingTemplate":
+                                                    case "ThingShape":
+                                                    case "DataShape":
+                                                    case "ModelTag":
+                                                    case "Network":
+                                                    case "IndustrialConnection":
+                                                    case "IntegrationConnector":
+                                                    case "Mashup":
+                                                    case "Master":
+                                                    case "MashupTemplate":
+                                                    case "Gadget":
+                                                    case "Dashboard":
+                                                    case "Menu":
+                                                    case "MediaEntity":
+                                                    case "StyleDefinition":
+                                                    case "StyleTheme":
+                                                    case "StateDefinition":
+                                                    case "DataTable":
+                                                    case "Stream":
+                                                    case "ValueStream":
+                                                    case "DataTag":
+                                                    case "PersistenceProvider":
+                                                    case "Blog":
+                                                    case "Wiki":
+                                                    case "UserGroup":
+                                                    case "User":
+                                                    case "Organization":
+                                                    case "ApplicationKey":
+                                                    case "DirectoryService":
+                                                    case "Authenticator":
+                                                    case "LocalizationTable":
+                                                    case "Resource":
+                                                    case "Subsystem":
+                                                        if (str_EntityType == "Wiki" || str_EntityType == "Blog" || str_EntityType == "ValueStream" || str_EntityType == "Stream" || str_EntityType == "DataTable" || str_EntityType == "IndustrialConnection" || str_EntityType == "IntegrationConnector")
+                                                            str_EntityType = "Thing";
+                                                        if (str_EntityType == "Master" || str_EntityType == "MashupTemplate" || str_EntityType == "Gadget")
+                                                            str_EntityType = "Mashup";
+                                                        if (str_EntityType == "MediaEntity")
+                                                            str_EntityType = "MediaEntitie";
+                                                        if (str_EntityType == "UserGroup")
+                                                            str_EntityType = "Group";
+                                                        switch (str_Operation) {
+                                                            case "add":
+                                                                logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                methodName = isInstancePermission ? "AddInstanceRunTimePermission" : "AddRunTimePermission";
+                                                                (eval(str_EntityType + "s"))[row.EntityName][methodName]({
+                                                                    type: str_PermissionType,
+                                                                    resource: row.Resource,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    allow: row.Allow
+                                                                });
+                                                                break;
+                                                            case "remove":
+                                                                //in this case, if the Operation type is Remove, we remove the permission.
+                                                                //if 
+                                                                logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                methodName = isInstancePermission ? "DeleteInstanceRunTimePermission" : "DeleteRunTimePermission";
+                                                                (eval(str_EntityType + "s"))[row.EntityName][methodName]({
+                                                                    type: str_PermissionType,
+                                                                    resource: row.Resource,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType
+                                                                });
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                        break;
+                                                    case "Collection":
+                                                        str_CollectionName = CollectionName[row.EntityName.toLowerCase()];
+                                                        switch (str_Operation) {
+                                                            case "add":
+                                                                logger.trace("Entered add runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].AddCollectionRunTimePermission({
+                                                                    type: str_PermissionType,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    allow: row.Allow,
+                                                                    collectionName: str_CollectionName,
+                                                                    resource: "*"
+                                                                });
+                                                                break;
+                                                            case "remove":
+                                                                //in this case, if the Operation type is Remove, we remove the permission.
+                                                                logger.trace("Entered remove runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].DeleteCollectionRunTimePermission({
+                                                                    type: str_PermissionType,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    collectionName: str_CollectionName,
+                                                                    resource: "*"
+                                                                });
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                            }
+                                            catch (ex) {
+                                                logger.error("Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + " because " + ex);
+                                                throw "Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + ", resource " + row.Resource + ", type: " + row.PermissionType + " because " + ex;
+                                            }
                                         }
+                                        ]]>
+                                        </code>
+                                    </Row>
+                                    <Row>
+                                        <code>
+                                        <![CDATA[
+                                        var runtime_params = {
+                                            t: me.RunTimePermissionsOps /* INFOTABLE */,
+                                            query: {
+                                                "filters": {
+                                                    "type": "EQ",
+                                                    "fieldName": "Version",
+                                                    "value": Version
+                                                }
+                                            }
+                                        };
+                                        var iftbl_RuntimeOperations = Resources["InfoTableFunctions"].Query(runtime_params);
+                                        //    var iftbl_RuntimeOperations = Things["GitBackup.RunTimePermission.DT"].QueryDataTableEntries({
+                                        //        maxItems: 1000000 /* NUMBER */,
+                                        //        values: undefined /* INFOTABLE */,
+                                        //        query: {
+                                        //            "filters": {
+                                        //                "type": "EQ",
+                                        //                "fieldName": "Version",
+                                        //                "value": Version
+                                        //            }
+                                        //        } /* QUERY */,
+                                        //        source: undefined /* STRING */,
+                                        //        tags: undefined /* TAGS */
+                                        //    });
+                                        var permissionTypes = {
+                                            propertyread: "PropertyRead",
+                                            serviceinvoke: "ServiceInvoke",
+                                            propertywrite: "PropertyWrite",
+                                            eventinvoke: "EventInvoke",
+                                            eventsubscribe: "EventSubscribe"
+                                        };
+                                        var PrincipalTypes = {
+                                            user: "User",
+                                            group: "Group"
+                                        };
+                                        var CollectionName = {
+                                            projects: "Projects",
+                                            things: "Things",
+                                            thingtemplates: "ThingTemplates",
+                                            thingshapes: "ThingShapes",
+                                            datashapes: "DataShapes",
+                                            networks: "Networks",
+                                            modeltags: "ModelTags",
+                                            notifications: "Notifications",
+                                            mashups: "Mashups",
+                                            dashboards: "Dashboards",
+                                            menus: "Menus",
+                                            mediaentities: "MediaEntities",
+                                            styledefinitions: "StyleDefinitions",
+                                            statedefinitions: "StateDefinitions",
+                                            stylethemes: "StyleThemes",
+                                            datatags: "DataTags",
+                                            persistenceproviders: "PersistenceProviders",
+                                            usergroups: "Groups",
+                                            users: "Users",
+                                            organizations: "Organizations",
+                                            applicationkeys: "ApplicationKeys",
+                                            directoryservices: "DirectoryServices",
+                                            authenticators: "Authenticators",
+                                            localizationtables: "LocalizationTables",
+                                            resources: "Resources",
+                                            subsystems: "Subsystems",
+                                            logs: "Logs"
+                                        };
                                         
-                                        catch (ex)
-                                        {
-                                            logger.error(ex);
+                                        // transform the table into a new one that expands all the csv lists
+                                        var iftbl_ExpandedOperations = DataShapes["GitBackup.RuntimePermissions.DS"].CreateValues();
+                                        for (var i = 0; i < iftbl_RuntimeOperations.length; i++) {
+                                            var element = iftbl_RuntimeOperations[i];
+                                            var splitPermissionType = element.PermissionType.split(",");
+                                            var splitResource = element.Resource.split(",");
+                                            var splitUser = element.User.split(",");
+                                            var splitEntityName = element.EntityName.split(",");
+                                            for (var j = 0; j < splitPermissionType.length; j++) {
+                                                for (var k = 0; k < splitResource.length; k++) {
+                                                    for (var l = 0; l < splitUser.length; l++) {
+                                                        for (var ii = 0; ii < splitEntityName.length; ii++) {
+                                                            iftbl_ExpandedOperations.AddRow({
+                                                                Version: element.Version,
+                                                                EntityName: splitEntityName[ii].trim(),
+                                                                EntityType: element.EntityType,
+                                                                Operation: element.Operation,
+                                                                Allow: element.Allow,
+                                                                PermissionType: splitPermissionType[j].trim(),
+                                                                User: splitUser[l].trim(),
+                                                                UserType: element.UserType,
+                                                                Resource: splitResource[k].trim()
+                                                            });
+                                                        }
+                                        
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        iftbl_ExpandedOperations = Resources["InfoTableFunctions"].Distinct({
+                                            t: iftbl_ExpandedOperations,
+                                            columns: "EntityName,EntityType,Operation,PermissionType,Resource,User,UserType,Version,Allow"
+                                        });
+                                        
+                                        var result = iftbl_ExpandedOperations;
+                                        
+                                        var tableLength = iftbl_ExpandedOperations.rows.length;
+                                        for (var _i = 0, _a = iftbl_ExpandedOperations.rows; _i < _a.length; _i++) {
+                                            try {
+                                                var row = _a[_i];
+                                                //making sure that casing is not an issue 
+                                                var str_Operation = row.Operation.toLowerCase();
+                                                var str_PrincipalType = PrincipalTypes[row.UserType.toLowerCase()];
+                                                var str_PermissionType = row.PermissionType.toLowerCase();
+                                        
+                                                var str_EntityType = row.EntityType;
+                                                //making sure that casing is not an issue for the Permission Type
+                                                //PermissionType can be PropertyRead, PropertyWrite, ServiceInvoke, EventInvoke, EventSubscribe
+                                                var isInstancePermission = false;
+                                        
+                                                if (str_PermissionType.indexOf("instance") == 0) {
+                                                    // this are thingtemplate/thingshape level permissions
+                                                    isInstancePermission = true;
+                                                    str_PermissionType = str_PermissionType.substring("instance".length);
+                                                }
+                                                str_PermissionType = permissionTypes[str_PermissionType];
+                                        
+                                                switch (str_EntityType) {
+                                                    case "Project":
+                                                    case "Thing":
+                                                    case "ThingTemplate":
+                                                    case "ThingShape":
+                                                    case "DataShape":
+                                                    case "ModelTag":
+                                                    case "Network":
+                                                    case "IndustrialConnection":
+                                                    case "IntegrationConnector":
+                                                    case "Mashup":
+                                                    case "Master":
+                                                    case "MashupTemplate":
+                                                    case "Gadget":
+                                                    case "Dashboard":
+                                                    case "Menu":
+                                                    case "MediaEntity":
+                                                    case "StyleDefinition":
+                                                    case "StyleTheme":
+                                                    case "StateDefinition":
+                                                    case "DataTable":
+                                                    case "Stream":
+                                                    case "ValueStream":
+                                                    case "DataTag":
+                                                    case "PersistenceProvider":
+                                                    case "Blog":
+                                                    case "Wiki":
+                                                    case "UserGroup":
+                                                    case "User":
+                                                    case "Organization":
+                                                    case "ApplicationKey":
+                                                    case "DirectoryService":
+                                                    case "Authenticator":
+                                                    case "LocalizationTable":
+                                                    case "Resource":
+                                                    case "Subsystem":
+                                                        if (str_EntityType == "Wiki" || str_EntityType == "Blog" || str_EntityType == "ValueStream" || str_EntityType == "Stream" || str_EntityType == "DataTable" || str_EntityType == "IndustrialConnection" || str_EntityType == "IntegrationConnector")
+                                                            str_EntityType = "Thing";
+                                                        if (str_EntityType == "Master" || str_EntityType == "MashupTemplate" || str_EntityType == "Gadget")
+                                                            str_EntityType = "Mashup";
+                                                        if (str_EntityType == "MediaEntity")
+                                                            str_EntityType = "MediaEntitie";
+                                                        if (str_EntityType == "UserGroup")
+                                                            str_EntityType = "Group";
+                                                        switch (str_Operation) {
+                                                            case "add":
+                                                                logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                methodName = isInstancePermission ? "AddInstanceRunTimePermission" : "AddRunTimePermission";
+                                                                (eval(str_EntityType + "s"))[row.EntityName][methodName]({
+                                                                    type: str_PermissionType,
+                                                                    resource: row.Resource,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    allow: row.Allow
+                                                                });
+                                                                break;
+                                                            case "remove":
+                                                                //in this case, if the Operation type is Remove, we remove the permission.
+                                                                //if 
+                                                                logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                                                methodName = isInstancePermission ? "DeleteInstanceRunTimePermission" : "DeleteRunTimePermission";
+                                                                (eval(str_EntityType + "s"))[row.EntityName][methodName]({
+                                                                    type: str_PermissionType,
+                                                                    resource: row.Resource,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType
+                                                                });
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                        break;
+                                                    case "Collection":
+                                                        str_CollectionName = CollectionName[row.EntityName.toLowerCase()];
+                                                        switch (str_Operation) {
+                                                            case "add":
+                                                                logger.trace("Entered add runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].AddCollectionRunTimePermission({
+                                                                    type: str_PermissionType,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    allow: row.Allow,
+                                                                    collectionName: str_CollectionName,
+                                                                    resource: "*"
+                                                                });
+                                                                break;
+                                                            case "remove":
+                                                                //in this case, if the Operation type is Remove, we remove the permission.
+                                                                logger.trace("Entered remove runtime collection case for Entity name " + row.EntityName + " and Entity Type " + row.EntityType);
+                                                                Resources["CollectionFunctions"].DeleteCollectionRunTimePermission({
+                                                                    type: str_PermissionType,
+                                                                    principal: row.User,
+                                                                    principalType: str_PrincipalType,
+                                                                    collectionName: str_CollectionName,
+                                                                    resource: "*"
+                                                                });
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                            } catch (ex) {
+                                                logger.error("Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + " because " + ex);
+                                                throw "Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + ", resource " + row.Resource + ", type: " + row.PermissionType + " because " + ex;
+                                            }
                                         }
                                         ]]>
                                         </code>
@@ -878,18 +1018,16 @@
                                     <Row>
                                         <code>
                                         <![CDATA[
-                                        try
-                                        { 
                                         //for ease of use we store the operations in a property in this thing; in case of size issues, please use a DataTable
-                                            
+                                        
                                         var params = {
-                                        	t: me.VisibilityOps /* INFOTABLE */,
+                                        	t: me.VisibilityOps /* INFOTABLE */ ,
                                         	query: {
-                                            "filters": {
-                                                "type": "EQ",
-                                                "fieldName": "Version",
-                                                "value": Version
-                                            }
+                                        		"filters": {
+                                        			"type": "EQ",
+                                        			"fieldName": "Version",
+                                        			"value": Version
+                                        		}
                                         	}
                                         };
                                         
@@ -912,78 +1050,83 @@
                                         //});
                                         
                                         var tableLength = iftbl_VisibilityOperations.rows.length;
-                                        for (var x=0; x < tableLength; x++) {
-                                            var row = iftbl_VisibilityOperations.rows[x];
-                                            //making sure that casing is not an issue 
-                                            var str_Operation = row.Operation.toLowerCase();
-                                            var str_EntityType = row.EntityType;
-                                            switch (str_EntityType)
-                                                    {
-                                                case "Project":
-                                                case "Thing":
-                                                case "ThingTemplate":
-                                                case "ThingShape":
-                                                case "DataShape":
-                                                case "ModelTag":
-                                                case "Network":
-                                                case "IndustrialConnection":
-                                                case "IntegrationConnector":
-                                                case "Mashup":
-                                                case "Master":
-                                                case "MashupTemplate":
-                                                case "Gadget":
-                                                case "Dashboard":
-                                                case "Menu":
-                                                case "MediaEntity":
-                                                case "StyleDefinition":
-                                                case "StyleTheme":
-                                                case "StateDefinition":
-                                                case "DataTable":
-                                                case "Stream":
-                                                case "ValueStream":
-                                                case "DataTag":
-                                                case "PersistenceProvider":
-                                                case "Blog":
-                                                case "Wiki":
-                                                case "UserGroup":
-                                                case "User":
-                                                case "Organization":
-                                                case "ApplicationKey":
-                                                case "DirectoryService":
-                                                case "Authenticator":
-                                                case "LocalizationTable":
-                                                case "Resource":
-                                                case "Subsystem":
-                                                    if (str_EntityType == "Wiki" | str_EntityType == "Blog" | str_EntityType == "ValueStream" |str_EntityType == "Stream" | str_EntityType == "DataTable"| str_EntityType == "IndustrialConnection" | str_EntityType == "IntegrationConnector") str_EntityType="Thing";
-                                                    if (str_EntityType == "Master" | str_EntityType == "MashupTemplate" | str_EntityType == "Gadget") str_EntityType="Mashup";
-                                                    if (str_EntityType == "MediaEntity") str_EntityType = "MediaEntitie";
-                                                    if (str_EntityType == "UserGroup") str_EntityType = "Group";
-                                                    switch (str_Operation){
-                                                        case "add":
-                                                    		 logger.trace("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                            (eval(str_EntityType+"s"))[row.EntityName].AddVisibilityPermission({	principal: row.OrganizationalUnitName,principalType: "OrganizationalUnit"});
-                                                    	break;
-                                                        case "addinstance":
-                                                    		 logger.trace("Entered add case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                            (eval(str_EntityType+"s"))[row.EntityName].AddInstanceVisibilityPermission({	principal: row.OrganizationalUnitName,principalType: "OrganizationalUnit"});
-                                                    	break;
-                                                        case "remove":
-                                                            logger.trace("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                              (eval(str_EntityType+"s"))[row.EntityName].DeleteVisibilityPermission({principal: row.OrganizationalUnitName ,	principalType: "OrganizationalUnit" });
-                                                            break;
-                                                        case "removeinstance":
-                                                            logger.trace("Entered remove case for Entity name "+row.EntityName +" and Entity Type "+ str_EntityType);
-                                                              (eval(str_EntityType+"s"))[row.EntityName].DeleteInstanceVisibilityPermission({principal: row.OrganizationalUnitName ,	principalType: "OrganizationalUnit" });
-                                                            break;
-                                                        default: break;
-                                                          }
-                                                default: break;
-                                            }
-                                        }
-                                        }
-                                        catch (ex)
-                                        {
-                                            logger.error(ex);
+                                        for (var x = 0; x < tableLength; x++) {
+                                        	try {
+                                        		var row = iftbl_VisibilityOperations.rows[x];
+                                        		//making sure that casing is not an issue 
+                                        		var str_Operation = row.Operation.toLowerCase();
+                                        		var str_EntityType = row.EntityType;
+                                        		var str_PrincipalType = row.entireOrganization ? "Organization" : "OrganizationalUnit";
+                                        		switch (str_EntityType) {
+                                        			case "Project":
+                                        			case "Thing":
+                                        			case "ThingTemplate":
+                                        			case "ThingShape":
+                                        			case "DataShape":
+                                        			case "ModelTag":
+                                        			case "Network":
+                                        			case "IndustrialConnection":
+                                        			case "IntegrationConnector":
+                                        			case "Mashup":
+                                        			case "Master":
+                                        			case "MashupTemplate":
+                                        			case "Gadget":
+                                        			case "Dashboard":
+                                        			case "Menu":
+                                        			case "MediaEntity":
+                                        			case "StyleDefinition":
+                                        			case "StyleTheme":
+                                        			case "StateDefinition":
+                                        			case "DataTable":
+                                        			case "Stream":
+                                        			case "ValueStream":
+                                        			case "DataTag":
+                                        			case "PersistenceProvider":
+                                        			case "Blog":
+                                        			case "Wiki":
+                                        			case "UserGroup":
+                                        			case "User":
+                                        			case "Organization":
+                                        			case "ApplicationKey":
+                                        			case "DirectoryService":
+                                        			case "Authenticator":
+                                        			case "LocalizationTable":
+                                        			case "Resource":
+                                        			case "Subsystem":
+                                        				if (str_EntityType == "Wiki" | str_EntityType == "Blog" | str_EntityType == "ValueStream" | str_EntityType == "Stream" | str_EntityType == "DataTable" | str_EntityType == "IndustrialConnection" | str_EntityType == "IntegrationConnector") str_EntityType = "Thing";
+                                        				if (str_EntityType == "Master" | str_EntityType == "MashupTemplate" | str_EntityType == "Gadget") str_EntityType = "Mashup";
+                                        				if (str_EntityType == "MediaEntity") str_EntityType = "MediaEntitie";
+                                        				if (str_EntityType == "UserGroup") str_EntityType = "Group";
+                                        				try {
+                                        					switch (str_Operation) {
+                                        						case "add":
+                                        							logger.trace("Entered add case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                        							(eval(str_EntityType + "s"))[row.EntityName].AddVisibilityPermission({
+                                        								principal: row.OrganizationalUnitName,
+                                        								principalType: str_PrincipalType
+                                        							});
+                                        							break;
+                                        						case "remove":
+                                        							logger.trace("Entered remove case for Entity name " + row.EntityName + " and Entity Type " + str_EntityType);
+                                        							(eval(str_EntityType + "s"))[row.EntityName].DeleteVisibilityPermission({
+                                        								principal: row.OrganizationalUnitName,
+                                        								principalType: str_PrincipalType
+                                        							});
+                                        							break;
+                                        						default:
+                                        							break;
+                                        					}
+                                        				} catch (ex) {
+                                        					logger.error("Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + " because " + ex);
+                                        					throw "Failed setting permission for " + row.EntityType + "[" + row.EntityName + "] for user/group " + row.User + ", because " + ex;
+                                          				}
+                                        			default:
+                                        				break;
+                                        		}
+                                        	} catch (ex) {
+                                        		logger.error(ex);
+                                                throw ex;
+                                        	}
                                         }
                                         ]]>
                                         </code>
@@ -1014,6 +1157,13 @@
                         <infoTable>
                             <DataShape>
                                 <FieldDefinitions>
+                                    <FieldDefinition
+                                     aspect.defaultValue="false"
+                                     aspect.isPrimaryKey="false"
+                                     baseType="BOOLEAN"
+                                     description=""
+                                     name="entireOrganization"
+                                     ordinal="6"></FieldDefinition>
                                     <FieldDefinition
                                      aspect.isPrimaryKey="true"
                                      baseType="STRING"
