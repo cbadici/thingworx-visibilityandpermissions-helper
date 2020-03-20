@@ -4,4 +4,4 @@ The following utility is intended to allow rapid setting of permissions and visi
 
 Full documentation is available in the Visibility And Permission Manager Extension v1.0.0.docx file.
 
-This repository is optimized to be used with the Git Backup Extension (https://marketplace.ptc.com/apps/233917/git-backup-extension-202#!overview). If this link does not work, please search for "git backup" in the https://marketplace.ptc.com / Browse Apps
+This repository is optimized to be used with the Git Backup Extension (https://github.com/vrosu/thingworx-gitbackup-extension/releases)
