@@ -1,4 +1,4 @@
-### Markdown
+### Visibility and Permissions Helper
 
 The following utility is intended to allow rapid setting of permissions and visibility based on a template in a new ThingWorx instance.
 
